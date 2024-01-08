@@ -38,4 +38,14 @@ async function submit() {
         .then(resp => resp.arrayBuffer())
         .then(buff => audioContext.decodeAudioData(buff));
     console.log(extra);
+
+    // Download the jingle
+    let jingle;
+    if (form.beeps) {
+        filename = "snippets/doodo.mp3"
+        jingle = await fetch(filename)
+            .then(resp => resp.arrayBuffer())
+            .then(buff => audioContext.decodeAudioData(buff));
+    }
+    console.log(jingle);
 }
