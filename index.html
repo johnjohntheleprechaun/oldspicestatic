@@ -19,12 +19,12 @@
   <div id="right-wrapper">
     <img id="title" src="images/title.png">
     <div id="content"> 
-      <form name="oldspice" action="./message.php" method="POST"> 
+      <form name="oldspice" action="javascript:submit()" method="POST"> 
         <div>Hello, you have dialed <input type="text" name="number" placeholder="phone number"></div>
         <br>
 
         The Tall accomplished man you're calling can't come to the phone right now because they're<br> 
-        <div><input type="radio" name="opt1" value="r" id="r"><label for="r">On Reddit</label></div> 
+        <div><input type="radio" name="opt1" value="r" id="r" checked><label for="r">On Reddit</label></div> 
         <div><input type="radio" name="opt1" value="c" id="c"><label for="c">Ripping out mass loads of weights</label></div> 
         <div><input type="radio" name="opt1" value="p" id="p"><label for="p">Polishing their monocle smile</label></div> 
         <div><input type="radio" name="opt1" value="e" id="e"><label for="e">Cracking walnuts with their man mind</label></div> 
@@ -33,14 +33,14 @@
         <br>
         But leave a message and they'll return your call as soon as possible<br><br> 
 
-        <div><input type="radio" name="opt2" value="g" id="g"><label for="g">I'm on a horse</label></div> 
+        <div><input type="radio" name="opt2" value="g" id="g" checked><label for="g">I'm on a horse</label></div> 
         <div><input type="radio" name="opt2" value="h" id="h"><label for="h">I'm on a phone</label></div> 
         <div><input type="radio" name="opt2" value="i" id="i"><label for="i">SWAN DIVE</label></div> 
         <div><input type="radio" name="opt2" value="j" id="j"><label for="j">This voicemail is now diamonds</label></div> 
         <br>
+        <br>
 
         <div><input type="checkbox" name="beeps" value="k" id="k"><label for="k">Do do do doot doo do do dooot</label></div>
-        <br> 
         <br>
 
         <input id="submit" type="submit" value="Make me the Old Spice Man!">
@@ -49,5 +49,6 @@
     </div> 
   </div> 
   </div>
+  <script src="main.js"></script>
 </body> 
 </html> 
