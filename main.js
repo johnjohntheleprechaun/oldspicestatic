@@ -26,9 +26,16 @@ async function submit() {
     console.log(numbers);
 
     // Download the reason snippet
-    const filename = "snippets/" + form.reason + ".mp3"
+    let filename = "snippets/" + form.reason + ".mp3"
     const reason = await fetch(filename)
         .then(resp => resp.arrayBuffer())
         .then(buff => audioContext.decodeAudioData(buff));
     console.log(reason);
+
+    // Download extra snippet
+    filename = "snippets/" + form.extra + ".mp3"
+    const extra = await fetch(filename)
+        .then(resp => resp.arrayBuffer())
+        .then(buff => audioContext.decodeAudioData(buff));
+    console.log(extra);
 }
