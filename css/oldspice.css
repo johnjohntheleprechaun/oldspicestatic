@@ -30,7 +30,7 @@ body {
 }
 
 #title {
-    width: 50%;
+    width: min(90%, 500px);
     align-self: center;
     margin-bottom: 15px;
 }
