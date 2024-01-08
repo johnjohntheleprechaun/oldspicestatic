@@ -1,57 +1,53 @@
 <!DOCTYPE html> 
 <html> 
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<head>
 <title>Old Spice Voicemail Generator</title> 
 <link href="css/oldspice.css" rel="stylesheet" type="text/css" /> 
 </head> 
  
-<body> 
-<div id="wrapper"> 
-  <div id="isiah_mustafa"></div> 
-  <div id="oldspice_logo"></div> 
-  <div id="box-wrapper"> 
-    <div id="box-top"></div> 
+<body>
+  <div id="page-wrapper">
+  <div id="left-wrapper">
+    <img src="images/monocle_smile.png">
+    <div id="credit"> 
+      Idea by: <a href="http://chriswastaken.com/" target="_blank">Chriswastaken</a><br> 
+      Code by: <a href="http://www.reddit.com/user/area" target="_blank">Area</a><br> 
+      Design by: <a href="http://nelsonabalosjr.com" target="_blank">Nelson Abalos Jr.</a><br><br> 
+      Many thanks to: <a href="http://www.reddit.com/r/reddit.com/comments/cpkpu/old_spice_man_records_voicemail_message_for/" target="_blank">Reddit</a>
+    </div> 
+  </div>
+  <div id="right-wrapper">
+    <img id="title" src="images/title.png">
     <div id="content"> 
       <form name="oldspice" action="./message.php" method="POST"> 
-        <p>Hello, you have dialed
-          <input type="text" name="number" value=""> 
-          <br>
-          (just put your number, no dashes)
-          <br> 
-          <br> 
-          The Tall accomplished man you're calling can't come to the phone right now because they're<br> 
-          <input type="radio" name="opt1" value="r"> on Reddit<br> 
-          <input type="radio" name="opt1" value="c"> Ripping out mass loads of weights<br> 
-          <input type="radio" name="opt1" value="p"> Polishing their monocle smile<br> 
-          <input type="radio" name="opt1" value="e"> Cracking walnuts with their man mind<br> 
-          <input type="radio" name="opt1" value="d"> building an orphanage with their barehands while playing a sweet, sweet lulluby for those children with two mallets against their abs xylophone<br> 
-        </p> 
-        But leave a message and they'll return your call as soon as possible<br><br> 
-
-        <input type="radio" name="opt2" value="g"> I'm on a horse<br> 
-        <input type="radio" name="opt2" value="h"> I'm on a phone<br> 
-        <input type="radio" name="opt2" value="i"> SWAN DIVE<br> 
-        <input type="radio" name="opt2" value="j"> This voicemail is now diamonds<br> 
+        <div>Hello, you have dialed <input type="text" name="number" placeholder="phone number"></div>
         <br>
 
-        <input type="checkbox" name="beeps" value="k">Do do do doot doo do do dooot
+        The Tall accomplished man you're calling can't come to the phone right now because they're<br> 
+        <div><input type="radio" name="opt1" value="r" id="r"><label for="r">On Reddit</label></div> 
+        <div><input type="radio" name="opt1" value="c" id="c"><label for="c">Ripping out mass loads of weights</label></div> 
+        <div><input type="radio" name="opt1" value="p" id="p"><label for="p">Polishing their monocle smile</label></div> 
+        <div><input type="radio" name="opt1" value="e" id="e"><label for="e">Cracking walnuts with their man mind</label></div> 
+        <div><input type="radio" name="opt1" value="d" id="d"><label for="d">Building an orphanage with their barehands while playing a sweet, sweet lulluby for those children with two mallets against their abs xylophone</label></div>
+         
+        <br>
+        But leave a message and they'll return your call as soon as possible<br><br> 
+
+        <div><input type="radio" name="opt2" value="g" id="g"><label for="g">I'm on a horse</label></div> 
+        <div><input type="radio" name="opt2" value="h" id="h"><label for="h">I'm on a phone</label></div> 
+        <div><input type="radio" name="opt2" value="i" id="i"><label for="i">SWAN DIVE</label></div> 
+        <div><input type="radio" name="opt2" value="j" id="j"><label for="j">This voicemail is now diamonds</label></div> 
+        <br>
+
+        <div><input type="checkbox" name="beeps" value="k" id="k"><label for="k">Do do do doot doo do do dooot</label></div>
         <br> 
         <br>
 
-        <input type="submit" value="Make me the Old Spice Man!">
+        <input id="submit" type="submit" value="Make me the Old Spice Man!">
       </form>
     
     </div> 
-    <div id="box-bot"></div> 
   </div> 
-  <div id="reddit-is-credit-to-team"> 
-    Idea by: <a href="http://chriswastaken.com/" target="_blank">Chriswastaken</a><br> 
-    Code by: <a href="http://www.reddit.com/user/area" target="_blank">Area</a><br> 
-    Design by: <a href="http://nelsonabalosjr.com" target="_blank">Nelson Abalos Jr.</a><br><br> 
-    Many thanks to: <a href="http://www.reddit.com/r/reddit.com/comments/cpkpu/old_spice_man_records_voicemail_message_for/" target="_blank">Reddit</a>
-  </div> 
-  <div class="clr"></div> 
-</div> 
+  </div>
 </body> 
 </html> 
