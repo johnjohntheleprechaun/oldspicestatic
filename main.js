@@ -133,6 +133,14 @@ async function submit() {
 async function exportAudio(buff) {
     const blob = bufferToWave(buff);
     console.log(blob);
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "voicemail.wav";
+    a.click();
+
+    URL.revokeObjectURL(url);
 }
 
 function bufferToWave(buff) {
@@ -174,17 +182,19 @@ function bufferToWave(buff) {
     while (dataPos < length / (channels.length * 4)) {
         for (let i = 0; i < channels.length; i++) {
             let sample = channels[i][dataPos];
+            let rounded = Math.round(sample * 0x7FFFFFFF);
             if (pos >= length + 44) {
                 console.log("fuck");
                 console.log(pos, buffer.byteLength);
                 console.log(dataPos, channels[i].length);
                 console.log(sample);
             }
-            view.setInt32(pos, sample, true);
+            view.setInt32(pos, rounded, true);
             pos += 4;
         }
         dataPos++;
     }
     console.log(buffer);
-    
+
+    return new Blob([buffer], { type: "audio/wav" });
 }
