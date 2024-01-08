@@ -122,11 +122,6 @@ async function submit() {
         finalBuff.copyToChannel(jingle.getChannelData(1), 1, consumedLength);
         consumedLength += jingle.length;
     }
-
-    // play the final sound
-    const output = new AudioBufferSourceNode(audioContext, { buffer: finalBuff });
-    output.connect(audioContext.destination);
-    output.start();
     exportAudio(finalBuff);
 }
 
