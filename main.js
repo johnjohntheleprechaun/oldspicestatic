@@ -127,4 +127,64 @@ async function submit() {
     const output = new AudioBufferSourceNode(audioContext, { buffer: finalBuff });
     output.connect(audioContext.destination);
     output.start();
+    exportAudio(finalBuff);
+}
+
+async function exportAudio(buff) {
+    const blob = bufferToWave(buff);
+    console.log(blob);
+}
+
+function bufferToWave(buff) {
+    const length = buff.length * buff.numberOfChannels * 4; // length * channels * 4 bytes (32 bits-per-chunk)
+    const buffer = new ArrayBuffer(length + 44);
+    const view = new DataView(buffer);
+    pos = 0;
+    view.setUint32(pos, 0x46464952, true); pos += 4; // "RIFF"
+    view.setUint32(pos, length + 44 - 8, true); pos += 4; // file length = buffer length + header length - "RIFF" tag
+    view.setUint32(pos, 0x45564157, true); pos += 4; // "WAVE"
+
+    // FMT CHUNK
+    view.setUint32(pos, 0x20746d66, true); pos += 4; // "fmt "
+    view.setUint32(pos, 16, true); pos += 4; // chunk size
+    view.setUint16(pos, 1, true); pos += 2; // uncompressed
+    view.setUint16(pos, 2, true); pos += 2; // channels
+    view.setUint32(pos, buff.sampleRate, true); pos += 4; // sample rate
+    view.setUint32(pos, buff.sampleRate * 2 * buff.numberOfChannels, true); pos += 4; // bytes per second
+    view.setUint16(pos, buff.numberOfChannels * 4, true); pos += 2; // data block size (channels * 32bits)
+    view.setUint16(pos, 32, true); pos += 2; // bits per sample
+
+    // DATA CHUNK
+    view.setUint32(pos, 0x61746164, true); pos += 4; // "data"
+    view.setUint32(pos, length, true); pos += 4; // audio data length
+    console.log(pos == 44);
+    console.log(length + pos == buffer.byteLength);
+
+    // write data
+    const channels = [];
+    for (let i = 0; i < buff.numberOfChannels; i++) {
+        channels.push(buff.getChannelData(i));
+    }
+    console.log(channels);
+    console.log(channels[0].length * 4 + channels[1].length * 4);
+    console.log(buffer.byteLength);
+    console.log(buffer.byteLength - (channels[0].length * 4 + channels[1].length * 4));
+    console.log(length/8, channels[0].length)
+    let dataPos = 0;
+    while (dataPos < length / (channels.length * 4)) {
+        for (let i = 0; i < channels.length; i++) {
+            let sample = channels[i][dataPos];
+            if (pos >= length + 44) {
+                console.log("fuck");
+                console.log(pos, buffer.byteLength);
+                console.log(dataPos, channels[i].length);
+                console.log(sample);
+            }
+            view.setInt32(pos, sample, true);
+            pos += 4;
+        }
+        dataPos++;
+    }
+    console.log(buffer);
+    
 }
