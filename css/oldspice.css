@@ -1,3 +1,9 @@
+@media only screen and (max-width: 800px) {
+    #left-wrapper {
+        display: none;
+    }
+}
+
 body {
     background: url(../images/bg.gif) black no-repeat;
     background-size: cover;
